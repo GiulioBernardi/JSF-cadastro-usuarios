@@ -5,62 +5,44 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head>
-
-<body style="background-color: #EEE">
-
-	<div class="card">
+<ui:composition template="_template.xhtml">
+	<ui:define name="page-content">
 		<h:form>
-			<p:tabMenu activeIndex="#{param.i}">
-				<p:menuitem value="Home" icon="pi pi-fw pi-home">
-					<f:param name="i" value="0" />
-				</p:menuitem>
-				<p:menuitem value="User Singup" icon="pi pi-fw pi-user-plus">
-					<f:param name="i" value="1" />
-				</p:menuitem>
-				<p:menuitem value="Profile" icon="pi pi-fw pi-user">
-					<f:param name="i" value="2" />
-				</p:menuitem>
+			<p:card style="width: 25em; margin: 1em auto">
+				<f:facet name="header">New User</f:facet>
 
-			</p:tabMenu>
+				<div class="ui-fluid">
+					<div class="p-field">
+						<label for="name">Name</label>
+						<p:inputText value="#{userBean.user.name}" id="name" type="text" />
+					</div>
+					<div class="p-field">
+						<label for="email">E-mail</label>
+						<p:inputText value="#{userBean.user.email}" id="email" type="text" />
+					</div>
+					<div class="p-field">
+						<label for="password">Password</label>
+						<p:inputText value="#{userBean.user.passWord}" id="password"
+							type="text" />
+					</div>
+					<div class="p-field">
+						<label for="age">Age</label>
+						<p:inputText value="#{userBean.user.age}" id="age" type="text" />
+					</div>
+				</div>
+
+				<f:facet name="footer">
+					<p:commandButton action="#{userBean.save()}" icon="pi pi-check"
+						value="Save" />
+					<p:commandButton icon="pi pi-times" value="Cancel"
+						styleClass="ui-button-secondary" style="margin-left: .5em" />
+				</f:facet>
+			</p:card>
 		</h:form>
-	</div>
+	</ui:define>
+</ui:composition>
 
 
-	<h:form>
-		<p:card style="width: 25em; margin: 1em auto">
-			<f:facet name="header">New User</f:facet>
 
 
-			<div class="ui-fluid">
-				<div class="p-field">
-					<label for="name">Name</label>
-					<p:inputText value="#{userBean.user.name}" id="name" type="text" />
-				</div>
-				<div class="p-field">
-					<label for="email">E-mail</label>
-					<p:inputText value="#{userBean.user.email}" id="email" type="text" />
-				</div>
-				<div class="p-field">
-					<label for="password">Password</label>
-					<p:inputText value="#{userBean.user.passWord}" id="password"
-						type="text" />
-				</div>
-				<div class="p-field">
-					<label for="age">Age</label>
-					<p:inputText value="#{userBean.user.age}" id="age" type="text" />
-				</div>
-			</div>
-
-			<f:facet name="footer">
-				<p:commandButton action="#{userBean.save()}" icon="pi pi-check"
-					value="Save" />
-				<p:commandButton icon="pi pi-times" value="Cancel"
-					styleClass="ui-button-secondary" style="margin-left: .5em" />
-			</f:facet>
-		</p:card>
-	</h:form>
-
-
-</body>
 </html>

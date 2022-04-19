@@ -1,36 +1,33 @@
 package br.com.fiap.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_user")
-@SequenceGenerator(allocationSize = 1, name = "user", sequenceName = "sq_tb_user")
 public class User {
 
 	@Id
-	@GeneratedValue(generator = "user", strategy = GenerationType.SEQUENCE)
-	@Column(name = "cd_user")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name = "nm_user")
+
 	private String name = "Meu nome";
-	
-	@Column(name = "ds_email")
+
 	private String email = "exemplo@gmail.com";
-	
-	@Column(name = "ds_password")
+
 	private String passWord = "MinhaSenha123!!!";
-	
-	@Column(name = "nr_age")
+
 	private Integer age = 30;
 
-	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -65,9 +62,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [name=" + this.name + ", email=" + this.email + ", passWord=" + this.passWord + ", age=" + this.age + "]";
+		return "User [name=" + this.name + ", email=" + this.email + ", passWord=" + this.passWord + ", age=" + this.age
+				+ "]";
 	}
 
-	
-	
 }

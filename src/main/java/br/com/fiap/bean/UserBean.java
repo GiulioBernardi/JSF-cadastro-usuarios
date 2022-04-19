@@ -1,6 +1,10 @@
 package br.com.fiap.bean;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import br.com.fiap.dao.UserDAO;
@@ -12,11 +16,21 @@ public class UserBean {
 	
 	private User user = new User();
 	
-	public void save() {
+	public String save() {
 		System.out.println(user);
 		new UserDAO().create(user);
+		
+		FacesContext
+			.getCurrentInstance()
+			.addMessage(null, 
+					new FacesMessage("New User added"));
+		
+		return "users";
 	}
 	
+	public List<User> getUsers(){
+		return new UserDAO().listAll();
+	}
 
 	public User getUser() {
 		return user;
