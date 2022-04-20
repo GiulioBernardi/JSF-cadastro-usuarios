@@ -1,5 +1,8 @@
 package br.com.fiap.model;
 
+
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +21,8 @@ public class User {
 
 	private String passWord = "MinhaSenha123!!!";
 
-	private Integer age = 30;
+	private LocalDate dateOfBirth;
+	
 
 	public Long getId() {
 		return id;
@@ -52,17 +56,20 @@ public class User {
 		this.passWord = passWord;
 	}
 
-	public Integer getAge() {
-		return age;
+	
+	
+	
+	public LocalDate getDateOfBirth() {
+		return dateOfBirth;
 	}
 
-	public void setAge(Integer age) {
-		this.age = age;
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	@Override
 	public String toString() {
-		return "User [name=" + this.name + ", email=" + this.email + ", passWord=" + this.passWord + ", age=" + this.age
+		return "User [name=" + this.name + ", email=" + this.email + ", passWord=" + this.passWord + ", bd=" + this.dateOfBirth
 				+ "]";
 	}
 
